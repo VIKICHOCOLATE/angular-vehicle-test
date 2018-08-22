@@ -1,0 +1,33 @@
+
+<div class="page-header">
+    <h1>{{user.owner.name | uppercase}} {{user.owner.surname | uppercase}} Details</h1>
+</div>
+
+<div class="row">
+    <div class="col-sm-5">
+        <div *ngIf="user">
+  
+            <a md-list-item *ngFor="let vehicle of user.vehicles" class="vehicle-link"
+            [class.thumbnail]="selectedVehicle && selectedVehicle.vehicleid === vehicle.vehicleid" (click)="onVehicleSelect(vehicle)" >
+          
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col-sm-7">
+                  <img class="img-rounded" style="max-width: 100%; max-height: 400px;" md-list-avatar [src]="vehicle.foto" [alt]="vehicle.make">
+                </div>
+                <div class="col-sm-5">
+                    <h3 md-line> {{vehicle.make}} {{vehicle.model}} - {{vehicle.year}} year</h3>
+                      <p md-line class="vin-number">
+                          VIN  : {{vehicle.vin}}
+                      </p>
+                </div>
+            </div>
+            </a>
+          </div>
+    </div>
+
+    <div class="col-sm-7">
+      <app-map [user]="user" [(selectedVehicle)]="selectedVehicle"></app-map>
+    </div>
+</div>
+
+<button class="btn btn-primary btn-lg" (click)="goBack()">Back</button>

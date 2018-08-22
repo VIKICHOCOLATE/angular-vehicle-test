@@ -1,0 +1,20 @@
+<div class="page-header">
+    <h1>Users list</h1>
+</div>
+
+<div class="row mb-3">
+  <div class="users">
+      <div *ngFor="let user of users">       
+        <div class="col-md-4">
+          <div class="jumbotron">
+              <h3>User: <span class="label label-primary">{{user.owner.name}} {{user.owner.surname}}</span></h3>
+              <h3>Vehicles: <span class="label label-info">{{user.vehicles?.length}}</span></h3>            
+              <img class="img-rounded" md-list-avatar [src]="user.owner.foto" [alt]="user.owner.name" 
+                style="width: 200px; height: 250px;" data-holder-rendered="true">
+              <hr>
+              <p><a class="btn btn-primary btn-lg" routerLink="/detail/{{user.userid}}" role="button">Details</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
